@@ -7,6 +7,7 @@
 //
 
 #import "WDViewController.h"
+#import "WDiOSDevice.h"
 
 @interface WDViewController ()
 
