@@ -10,6 +10,9 @@
 #endif
 #endif
 
+#import "WDDevice.h"
+#import "WDLocationManager.h"
+#import "WindBaseManager.h"
 
 FOUNDATION_EXPORT double WDiOSLibVersionNumber;
 FOUNDATION_EXPORT const unsigned char WDiOSLibVersionString[];
