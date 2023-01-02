@@ -1,0 +1,6 @@
+framework module WDiOSLib {
+  umbrella header "WDiOSLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_WDiOSLib_Tests {
+  umbrella header "Pods-WDiOSLib_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
