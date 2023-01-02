@@ -51,7 +51,7 @@
     CLLocation *location = [locations lastObject];
     CLGeocoder *gecoder = [[CLGeocoder alloc] init];
     [self.locationManager stopUpdatingLocation];
-    @weakify(self)
+    __weak typeof (self) weakSelf = self;
     if(@available(iOS 11.0, *)) {
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSArray * allLanguages = [defaults objectForKey:@"AppleLanguages"];
@@ -67,7 +67,7 @@
                 NSString *subLocality=[addressDic objectForKey:@"SubLocality"];
                 NSString *street=[addressDic objectForKey:@"Street"];
                 NSString *addressDetails = [NSString stringWithFormat:@"%@%@%@",city,subLocality,street];
-                for (id delegate in weak_self.delegates) {
+                for (id delegate in weakSelf.delegates) {
                     if ([delegate respondsToSelector:@selector(didUpdateLocation:latitude:longitude:)]) {
                         [delegate didUpdateLocation:addressDetails
                                            latitude:location.coordinate.latitude
@@ -76,7 +76,7 @@
                 }
             } else {
                 NSLog(@"%@",error);
-                for (id delegate in weak_self.delegates) {
+                for (id delegate in weakSelf.delegates) {
                     if ([delegate respondsToSelector:@selector(didUpdateLocation:latitude:longitude:)]) {
                         [delegate didUpdateLocation:@""
                                            latitude:location.coordinate.latitude
@@ -96,7 +96,7 @@
                 NSString *subLocality=[addressDic objectForKey:@"SubLocality"];
                 NSString *street=[addressDic objectForKey:@"Street"];
                 NSString *addressDetails = [NSString stringWithFormat:@"%@%@%@",city,subLocality,street];
-                for (id delegate in weak_self.delegates) {
+                for (id delegate in weakSelf.delegates) {
                     if ([delegate respondsToSelector:@selector(didUpdateLocation:latitude:longitude:)]) {
                         [delegate didUpdateLocation:addressDetails
                                            latitude:location.coordinate.latitude
@@ -105,7 +105,7 @@
                 }
             } else {
                 NSLog(@"%@",error);
-                for (id delegate in weak_self.delegates) {
+                for (id delegate in weakSelf.delegates) {
                     if ([delegate respondsToSelector:@selector(didUpdateLocation:latitude:longitude:)]) {
                         [delegate didUpdateLocation:@""
                                            latitude:location.coordinate.latitude
